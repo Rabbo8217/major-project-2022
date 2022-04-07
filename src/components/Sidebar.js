@@ -14,7 +14,7 @@ function Sidebar() {
 			width: 0,
 		},
 		show: {
-			width: "100px",
+			width: "200px",
 			transition: {
 				duration: 0.2,
 			},
@@ -22,38 +22,42 @@ function Sidebar() {
 	};
 	return (
 		<motion.div
-			animate={{ width: isOpen ? "180px" : "55px" }}
+			animate={{ width: isOpen ? "200px" : "55px" }}
 			className="sidebar shadow-sm">
-			<button className="hamb-btn">
-				<GiHamburgerMenu onClick={toggle} />
-			</button>
 			<div className="sidebar-header">
-				<AnimatePresence>
-					<h2 className="sidebar-logo">
-						<RiNeteaseCloudMusicFill />
-					</h2>
-					{isOpen && (
-						<motion.h3
-							initial="hidden"
-							animate="show"
-							exit="hidden"
-							variants={inputAnimation}>
-							Muser
-						</motion.h3>
-					)}
-				</AnimatePresence>
+				<button className="hamb-btn">
+					<GiHamburgerMenu onClick={toggle} />
+				</button>
+				<div className="logo d-flex align-items-baseline">
+					<AnimatePresence>
+						<h2 className="sidebar-logo">
+							<RiNeteaseCloudMusicFill />
+						</h2>
+						{isOpen && (
+							<motion.h3
+								initial="hidden"
+								animate="show"
+								exit="hidden"
+								variants={inputAnimation}>
+								Muser
+							</motion.h3>
+						)}
+					</AnimatePresence>
+				</div>
 			</div>
 			<div className="routes">
-				{routes.map((route) => (
-					<NavLink to={route.path} key={route.name} className="list-item">
-						<div className="icon">{route.icon}</div>
-						{isOpen && <div className="link-text">{route.name}</div>}
-					</NavLink>
-				))}
+				{routes.map((route) => {
+					if (route.title)
+						return isOpen && <div className="list-title ">{route.text}</div>;
+					else
+						return (
+							<NavLink to={route.path} key={route.name} className="list-item">
+								<div className="icon">{route.icon}</div>
+								{isOpen && <div className="link-text">{route.name}</div>}
+							</NavLink>
+						);
+				})}
 			</div>
-			{/* <button className="px-2 py-1 border border-0 btn-danger rounded-3 shadow w-75 add-music-btn">
-					ADD MUSIC
-				</button> */}
 		</motion.div>
 	);
 }

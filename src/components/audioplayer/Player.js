@@ -103,7 +103,7 @@ function Player() {
 						src={song}
 						onLoadedData={(e) => {
 							// console.log(e.currentTarget.duration);
-							setDuration(e.currentTarget.setDuration.toFizxed(2));
+							setDuration(e.currentTarget.setDuration.toFixed(2));
 						}}
 						onTimeUpdate={getCurrDuration}></audio>
 					<button
