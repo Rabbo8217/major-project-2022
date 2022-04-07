@@ -28,7 +28,7 @@ function Home() {
 							height="200px"
 						/>
 						<div className="card-footer">
-							<p className="mb-0 fw-bold">I Love You Mummy</p>
+							<p className="mb-0 fw-bold">XYZ</p>
 							<p className="mb-0 ">Arebica Luna</p>
 						</div>
 					</div>
