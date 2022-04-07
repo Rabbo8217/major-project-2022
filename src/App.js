@@ -4,6 +4,9 @@ import Searchbar from "./components/Searchbar";
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import "./App.scss";
 import Home from "./pages/Home";
+import International from "./pages/home/International";
+import Trending from "./pages/home/Trending";
+import Recent from "./pages/home/Recent";
 import Genres from "./pages/Genres";
 import Artists from "./pages/Artists";
 import Stations from "./pages/Stations";
@@ -19,7 +22,11 @@ function App() {
 			<Router>
 				<Main>
 					<Routes>
-						<Route path="/" element={<Home />}></Route>
+						<Route path="/" element={<Home />}>
+							<Route path="/recent" element={<Recent />} />
+							<Route path="/trending" element={<Trending />} />
+							<Route path="/international" element={<International />} />
+						</Route>
 						<Route path="/genres" element={<Genres />}></Route>
 						<Route path="/artists" element={<Artists />}></Route>
 						<Route path="/stations" element={<Stations />}></Route>
